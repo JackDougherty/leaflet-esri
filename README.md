@@ -18,3 +18,5 @@ Search in GIS Data http://gisdata.hartford.gov/
 - Bike Routes, City of Hartford, http://gisdata.hartford.gov/datasets/42e0c098796848de8cbf3d6e8029c34c_9
 
 - School Buildings, 2016-17, City of Hartford, http://gisdata.hartford.gov/datasets/35b8d4ff98b84d088ec2315b17367b13_4
+
+REMINDER: convert all http to https
