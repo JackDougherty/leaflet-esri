@@ -65,7 +65,7 @@
 
   //ArcGIS Online data from City of Hartford http://gisdata.hartford.gov/
   var schools = L.esri.featureLayer({
-    url: 'http://gis1.hartford.gov/arcgis/rest/services/OpenData_Education_Youth_Family/MapServer/4/'
+    url: 'https://gis1.hartford.gov/arcgis/rest/services/OpenData_Education_Youth_Family/MapServer/4/'
   });
   schools.bindPopup(function (evt) {
     return L.Util.template('<p>{SCHOOL_NAME1}<br>{ADDRESS}</p>', evt.feature.properties);
@@ -73,7 +73,7 @@
   controlLayers.addOverlay(schools, 'HPS Schools 2016-17 (from Hartford GIS)');
 
   var bikeRoutes = L.esri.featureLayer({
-    url: 'http://gis1.hartford.gov/arcgis/rest/services/OpenData_Community/MapServer/9',
+    url: 'https://gis1.hartford.gov/arcgis/rest/services/OpenData_Community/MapServer/9',
     style: function (feature) {
       if (feature.properties.TYPE === 'Bike Lane'){
         return {color: 'green', weight: 3 };
