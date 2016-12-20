@@ -27,12 +27,7 @@
   L.esri.basemapLayer('GrayLabels').addTo(map);
 
   L.esri.featureLayer({
-    url: 'http://thub-gis.engr.uconn.edu:6080/arcgis/rest/services/TOI/Hartford_TOI/MapServer',
-    // style: function (feature) {
-    //   if(feature.properties.NAME === 'Downtown'){
-    //     return {color: 'red', weight: 2 };
-    //   }
-    // }
+    url: 'https://services1.arcgis.com/5rblLCKLgS4Td60j/arcgis/rest/services/CTtowns/FeatureServer/0',
   }).addTo(map);
 </script>
 

@@ -36,22 +36,17 @@
   var lightAll = new L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
   }).addTo(map); // adds layer by default
-  controlLayers.addBaseLayer(lightAll, 'CartoDB LightAll');
-
-  var lightNoLabels = new L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-  });
-  controlLayers.addBaseLayer(lightNoLabels, 'CartoDB Light no labels');
+  controlLayers.addBaseLayer(lightAll, 'Gray basemap (from Carto)');
 
   // Esri streets basemapLayer (dependency: Esri leaflet plugin)
   var Esri_Streets =   L.esri.basemapLayer('Streets');
-  controlLayers.addBaseLayer(Esri_Streets, 'Esri Streets');
+  controlLayers.addBaseLayer(Esri_Streets, 'Street basemap (from Esri)');
 
   // Esri satellite map (no Esri leaflet dependency; see http://leaflet-extras.github.io/leaflet-providers/preview/)
   var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
   });
-  controlLayers.addBaseLayer(Esri_WorldImagery, 'Esri World Imagery');
+  controlLayers.addBaseLayer(Esri_WorldImagery, 'Satellite basemap (from Esri)');
 
   // UConn MAGIC Historical WMS tileLayer.WMS as a baselayer - see http://leafletjs.com/reference.html#tilelayer-wms
   // UConn MAGIC WMS settings (currently http, not https) - see http://geoserver.lib.uconn.edu:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.demo.MapPreviewPage
@@ -59,7 +54,7 @@
     layers: 'MAGIC:1934 Connecticut Aerial Photography',
     attribution: '1934 <a href="http://magic.library.uconn.edu">MAGIC UConn</a> and <a href="http://cslib.org">CSL</a>'
   });
-  controlLayers.addBaseLayer(aerial1934, 'CT Aerial 1934');
+  controlLayers.addBaseLayer(aerial1934, 'CT Aerial 1934 (UConn MAGIC)');
 
   /* OVERLAYS */
 
@@ -70,7 +65,7 @@
   schools.bindPopup(function (evt) {
     return L.Util.template('<p>{SCHOOL_NAME1}<br>{ADDRESS}</p>', evt.feature.properties);
   }).addTo(map);
-  controlLayers.addOverlay(schools, 'HPS Schools 2016-17 (from Hartford GIS)');
+  controlLayers.addOverlay(schools, 'HPS Schools 2016-17 (Hartford Open Data ArcGIS Online)');
 
   var bikeRoutes = L.esri.featureLayer({
     url: 'https://gis1.hartford.gov/arcgis/rest/services/OpenData_Community/MapServer/9',
@@ -82,30 +77,27 @@
       }
     }
   });
-  controlLayers.addOverlay(bikeRoutes, 'Bike Routes (from Hartford GIS)');
+  controlLayers.addOverlay(bikeRoutes, 'Bike Routes (Hartford Open Data ArcGIS Online)');
 
-  // DATA from ArcGIS online not yet working here
-  // var downtown = L.esri.featureLayer({
-  //   url: 'http://services.arcgis.com/2ycVue24EK6qzjat/arcgis/rest/services/Downtown_Hartford/FeatureServer'
-  // controlLayers.addOverlay(downtown, 'Downtown (from ArcGIS Online)');
+  var towns = L.esri.featureLayer({
+    url: 'https://services1.arcgis.com/5rblLCKLgS4Td60j/arcgis/rest/services/CTtowns/FeatureServer/0'
+  });
+  controlLayers.addOverlay(towns, 'CT Towns (Trinity College ArcGIS Online)');
 
-  // NOT YET WORKING
-  // var zoning = L.esri.featureLayer({
-  //   url: 'http://services.arcgis.com/2ycVue24EK6qzjat/arcgis/rest/services/Downtown_Zoning/FeatureServer',
-  //   style: function (feature) {
-  //     if(feature.properties.LABEL === 'B-2'){
-  //       return {color: 'blue', weight: 2 };
-  //     } else if(feature.properties.LABEL === 'B-1'){
-  //       return { color: 'red', weight: 2 };
-  //     } else {
-  //       return { color: 'white', weight: 2 };
-  //     }
-  //   }
-  // });
-  // controlLayers.addOverlay(zoning, 'Downtown zoning (from ArcGIS Online)');
-
+  var zoning = L.esri.featureLayer({
+    url: 'https://services.arcgis.com/2ycVue24EK6qzjat/arcgis/rest/services/Downtown_Zoning/FeatureServer/0',
+    style: function (feature) {
+      if(feature.properties.LABEL === 'B-2'){
+        return {color: 'blue', weight: 2 };
+      } else if(feature.properties.LABEL === 'B-1'){
+        return { color: 'red', weight: 2 };
+      } else {
+        return { color: 'green', weight: 2 };
+      }
+    }
+  });
+  controlLayers.addOverlay(zoning, 'Downtown zoning (from ArcGIS Online)');
 
   </script>
-
 </body>
 </html>

@@ -27,7 +27,7 @@
 
   //ArcGIS Online data from City of Hartford http://gisdata.hartford.gov/
   var schools = L.esri.featureLayer({
-      url: 'http://gis1.hartford.gov/arcgis/rest/services/OpenData_Education_Youth_Family/MapServer/4/'
+      url: 'https://gis1.hartford.gov/arcgis/rest/services/OpenData_Education_Youth_Family/MapServer/4/'
     }).addTo(map);
 
     schools.bindPopup(function (evt) {
