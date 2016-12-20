@@ -1,16 +1,16 @@
-# leaflet-map-esri
+# leaflet-esri
 Leaflet maps using esri plugin, with Hartford-area data from ArcGISOnline web services and other sources
 
 ## Demo: multiple layers and sources
-https://jackdougherty.github.io/leaflet-map-esri/index.html
+https://jackdougherty.github.io/leaflet-esri/index.html
 
 ## Simple maps of specific layers
 
 - clickable features: schools
-https://jackdougherty.github.io/leaflet-map-esri/schools.html
+https://jackdougherty.github.io/leaflet-esri/schools.html
 
 - polygons: towns
-https://jackdougherty.github.io/leaflet-map-esri/towns.html
+https://jackdougherty.github.io/leaflet-esri/towns.html
 
 ## Important reminder
 
