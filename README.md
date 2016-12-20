@@ -12,9 +12,11 @@ https://jackdougherty.github.io/leaflet-esri/schools.html
 - polygons: towns
 https://jackdougherty.github.io/leaflet-esri/towns.html
 
-## Important reminder
+## Reminders
 
-convert all data source files from http to https to avoid Chrome browser errors
+See plugin and examples at http://esri.github.io/esri-leaflet/
+
+Important: convert all data source files from http to https to avoid Chrome browser errors
 
 # GIS data sources
 
